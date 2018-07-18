@@ -28,7 +28,7 @@ public class LecturaDeArchivoConfiguracion {
 		try {
 
 			// Directorio donde se encuentra el archivo de propiedades
-			archivoDeLectura = new FileInputStream("C:\\Users\\MATEO.CASTANO\\eclipse-workspace\\nequiBack\\src\\main\\resources\\Nequi.properties");
+			archivoDeLectura = new FileInputStream("src/main/resources/Nequi.properties");
 
 			// carga el archivo de propiedades
 			configuracion.load(archivoDeLectura);
@@ -64,7 +64,7 @@ public class LecturaDeArchivoConfiguracion {
 		try {
 
 			// Directorio donde se encuentra el archivo de propiedades
-			archivoDeLectura = new FileInputStream("C:\\Users\\MATEO.CASTANO\\eclipse-workspace\\nequiBack\\src\\main\\resources\\Querys.properties");
+			archivoDeLectura = new FileInputStream("src\\main\\resources\\Querys.properties");
 
 			// carga el archivo de propiedades
 			configuracion.load(archivoDeLectura);

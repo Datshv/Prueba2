@@ -1,0 +1,4 @@
+ArchivoXML_Request = nullRecargar Saldo Paypal SHCAN  18072018 11.13.010REQUEST.xml
+ArchivoXML_Response = nullRecargar Saldo Paypal SHCAN 18072018 11.13.010RESPONSE.xml
+MQ_Message_Id = 1807201811.13.0100
+Comunicador = Inicio
