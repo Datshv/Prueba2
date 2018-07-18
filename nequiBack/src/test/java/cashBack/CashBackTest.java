@@ -1,8 +1,10 @@
 package cashBack;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 import baseDatos.BaseDeDatos;
 import manejador.EjecutarArchivoPrueba;
@@ -18,6 +20,7 @@ class CashBackTest {
 		String resultadoEsperado = prueba.mapaDeValoresDelDataDriven.get(6);
 	    String resultado = prueba.leerArchivoXML(prueba.xmlResponse, "HostTransaction", "Status");
 	    System.out.println(prueba.consultarEnBaseDatos("SELECT 1+1 FROM DUAL")); 
+	    
 	    assertEquals(resultadoEsperado, resultado);
 	}
 	
