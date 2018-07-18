@@ -357,7 +357,9 @@ public class CreadorDelRequest extends BaseDeDatos{
 				throw new java.lang.RuntimeException(
 						"No existe el archivo MQconnection.jar en la ruta " + mapaDeConfiguracion.get("RutaTrabajo"));
 			}
-		} catch (IOException | InterruptedException e) {
+		} catch (IOException e) {
+			e.printStackTrace();
+		}catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
