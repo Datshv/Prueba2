@@ -6,10 +6,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import baseDatos.BaseDeDatos;
 import manejador.EjecutarArchivoPrueba;
 
-class CashBackTest {
+public class CashBackTest {
 
 	/**
 	 * Prueba de CashBack y Bonos
