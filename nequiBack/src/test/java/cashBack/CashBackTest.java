@@ -21,6 +21,7 @@ public class CashBackTest {
 		String valorEnBD = prueba.consultarEnBaseDatos("SELECT TRAN_AMT FROM TBAADM.DTD WHERE TRIM(TRAN_ID) = '"+numeroDeTransaccion+"' AND PART_TRAN_TYPE = 'C'");
 		assertEquals(valorDeLaTransaccion, valorEnBD);
 		
+		
 	}
 	
 	
