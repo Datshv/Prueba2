@@ -42,13 +42,51 @@ public class CreadorDelRequest extends BaseDeDatos{
 
 	private String nombreArchivoExcel;
 	private String filaConDatosDePrueba;
+	private String mqFile;
+	
+	/**
+	 * Este mapa de valores contiene toda la informacion del DATADRIVEN (Excel que se va a utilizar)
+	 * y su fila correspondiente para llenar los datos del REQUEST A ENVIAR en las colas MQ
+	 * @Type Map<Integer,String>
+	 * @author Mateo Castaño Vasquez
+	 */
 	public Map<Integer, String> mapaDeValoresDelDataDriven;
+	
+	
+	/**
+	 * Este mapa contiene los valores que seran remplazados en el REQUEST Despues de hacer todas los remplazos 
+	 * de Bases de datos por la informacion que se necesita agregar en el REQUEST 
+	 * @Type Map<String,String>
+	 * @author Mateo Castaño Vasquez
+	 */
 	public Map<String, String> mapaDeValoresQueRemplazanElRequest;
+	
+	
+	/**
+	 * Esta variable contiene la ruta del archivo REQUEST que se enviara a las colas MQ
+	 * @Type String
+	 * @author Mateo Castaño Vasquez
+	 */
 	public String xmlRequest;
-	public String mqFile;
+	
+	
+	/**
+	 * Esta variable contiene la ruta del archivo RESPONSE que dio las colas MQ
+	 * @Type String
+	 * @author Mateo Castaño Vasquez
+	 */
 	public String xmlResponse;
 	
-	public CreadorDelRequest(String nombreArchivoExcel, String filaConDatosDePrueba,Map<String,String> mapaDeValoresQueRemplazanElRequest) {
+	
+	/**
+	 * Constructor el cual realizar todos los pasos necesarios para crear el archivo Reques y enviarlo
+	 * a las colas MQ
+	 * @param nombreArchivoExcel
+	 * @param filaConDatosDePrueba
+	 * @param mapaDeValoresQueRemplazanElRequest
+	 * @author Mateo Castaño Vasquez
+	 */
+	protected CreadorDelRequest(String nombreArchivoExcel, String filaConDatosDePrueba,Map<String,String> mapaDeValoresQueRemplazanElRequest) {
 		super();	
 		this.nombreArchivoExcel= nombreArchivoExcel;
 	    this.filaConDatosDePrueba= filaConDatosDePrueba;
@@ -58,15 +96,12 @@ public class CreadorDelRequest extends BaseDeDatos{
 		remplazadorDeArchivoRequest();
 		archivoMQfile();
 		ejecutarMQjar();
-		System.out.println("salio");
 	}
-	
-
-
 	
 	
 	/**
 	 * Este metodo permite leer el archivo excel el cual contiene los datos para el File Reference
+	 * @author Mateo Castaño Vasquez
 	 */
 	private void lecturaArchivoExcel() {
 		// directorio donde se encuentra el archivo excel
@@ -114,6 +149,7 @@ public class CreadorDelRequest extends BaseDeDatos{
 	
 	/**
 	 * Copia el archivo de Reference file y lo pega en el directorio del request files 
+	 * @author Mateo Castaño Vasquez
 	 */
 	private void crearArchivoRequest() {
 		Calendar date = Calendar.getInstance();
@@ -136,7 +172,7 @@ public class CreadorDelRequest extends BaseDeDatos{
 			out.close();
 			System.out.println("finalizo");
 		} catch (IOException e) {
-			System.err.println("Hubo un error de entrada/salida!!!");
+			System.err.println("Hubo un error al crear el archivo request !!!"+e.getStackTrace());
 		}
 	}
 	
@@ -146,6 +182,7 @@ public class CreadorDelRequest extends BaseDeDatos{
 /**
  * Metodo encargado de crear un mapa el cual contiene los valores que seran remplazados en 
  * el Request
+ * @author Mateo Castaño Vasquez
  * @param mapaDeValoresQueRemplazanElRequest
  */
 	private void remplazosEnArchivoRequest(Map<String, String> mapaDeValoresQueRemplazanElRequest) {
@@ -239,6 +276,7 @@ public class CreadorDelRequest extends BaseDeDatos{
 
 /**
  * Metodo encargado de remplazar todo los valores ** en el request
+ * @author Mateo Castaño Vasquez
  */
 	private void remplazadorDeArchivoRequest() {
 		
@@ -270,11 +308,13 @@ public class CreadorDelRequest extends BaseDeDatos{
 	
 	/**
 	 * Este metodo nos permite leer el archivo xml que necesitemos y buscar un 
-	 * tag interno con su nodo padre e hijo
+	 * tag interno con su nodo padre e hijo recibimos el nodoPadre y el nodoHijo el cual
+	 * contiene
+	 * @author Mateo Castaño Vasquez
 	 * @param XML
 	 * @param nodoPadre
 	 * @param nodoHijo
-	 * @return
+	 * @return la palabra que contiene internamente los tags buscados (String)
 	 */
 	public String leerArchivoXML(String XML, String nodoPadre, String nodoHijo) {
 
@@ -318,6 +358,7 @@ public class CreadorDelRequest extends BaseDeDatos{
 	/**
 	 * La creacion de este archivo es necesario para la ejecucion del
 	 * jar MQ el cual se conecta a las colas MQ
+	 * @author Mateo Castaño Vasquez
 	 */
 	private void archivoMQfile() {
 		
@@ -344,6 +385,7 @@ public class CreadorDelRequest extends BaseDeDatos{
 	
 	/**
 	 * Ejecucion de archivoMQJar
+	 * @author Mateo Castaño Vasquez
 	 */
 	private void ejecutarMQjar() {
 		try {

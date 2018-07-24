@@ -1,7 +1,6 @@
 package propiedades;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;

@@ -10,20 +10,43 @@ import java.util.Properties;
 
 public class LecturaDeArchivoConfiguracion {
 
+   
+	/**
+	 * Este mapa contiene toda la informacion de la configuracion del proyecto
+	 * Incluyendo rutas de directorios, conexion a base de datos, etc.
+	 * @Type Map<String,String>
+	 * @author Mateo Castaño Vasquez
+	 */
 	public Map<String, String> mapaDeConfiguracion = new HashMap<String, String>();
+	
+	
+	/**
+	 * Este mapa contiene todos los querys que utiliza el DataDriven para traer informacion de la BD
+	 * @Type Map<String,String>
+	 * @author Mateo Castaño Vasquez
+	 */
 	public Map<String, String> mapaDeQuerys = new HashMap<String, String>();
 
+	
 	private Properties configuracion =null;
 	private InputStream archivoDeLectura = null;
 
-	public LecturaDeArchivoConfiguracion() {
-		leerArchivDePropiedades();
+	/**
+	 * Contructor de la clase encargada de la lectura de los archivos de configuracion
+	 * @author Mateo Castaño Vasquez
+	 */
+	protected LecturaDeArchivoConfiguracion() {
+		leerArchivoDePropiedades();
 		leerArchivDeQuerys();
 	}
 	
 	
 	
-	public void leerArchivDePropiedades() {
+	/**
+	 * Metodo Encargado de la lectura de los archivos de propiedades del proyecto
+	 * @author Mateo Castaño Vasquez
+	 */
+	private void leerArchivoDePropiedades() {
 		configuracion =  new Properties();
 		try {
 
@@ -59,7 +82,11 @@ public class LecturaDeArchivoConfiguracion {
 	}
 	
 	
-	public void leerArchivDeQuerys() {
+	/**
+	 * Metodo encargado de leer el archivo que contiene los querys que seran utilizados en el DataDriven
+	 * @author Mateo Castaño Vasquez
+	 */
+	private void leerArchivDeQuerys() {
 		configuracion =  new Properties();
 		try {
 

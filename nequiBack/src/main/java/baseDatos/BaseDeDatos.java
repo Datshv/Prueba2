@@ -10,14 +10,20 @@ import propiedades.LecturaDeArchivoConfiguracion;
 
 public class BaseDeDatos extends LecturaDeArchivoConfiguracion{
 
-	public Connection conexion = null;
+	private Connection conexion = null;
 	
-	public BaseDeDatos() {
+	protected BaseDeDatos() {
 		super();
 	}
 	
+	/**
+	 * Metodo encargado de crear la conexion a BASE DE DATOS
+	 * @author Mateo Castaño Vasquez
+	 * @return
+	 */
 	@SuppressWarnings("finally")
-	public Connection crearConexion() {
+	private Connection crearConexion() {
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
 			 
@@ -45,7 +51,12 @@ public class BaseDeDatos extends LecturaDeArchivoConfiguracion{
 		}
 	}
 	
-	public void cerrarConexion() {
+	
+	/**
+	 * Metodo encargado de cerrar la conexion a BASE DE DATOS
+	 * @author Mateo Castaño Vasquez
+	 */
+	private void cerrarConexion() {
 		try {
 			conexion.close();
 		} catch (SQLException e) {
@@ -55,6 +66,12 @@ public class BaseDeDatos extends LecturaDeArchivoConfiguracion{
 	}
 	
 
+	/**
+	 * Metodo encargado de realizar la busqueda en BD.
+	 * @author Mateo Castaño Vasquez
+	 * @param queryBaseDeDatos
+	 * @return Un String el cual contiene el resultado del valor buscado en BD
+	 */
 	public String consultarEnBaseDatos(String queryBaseDeDatos) {
 	//	crearConexion();
 		
