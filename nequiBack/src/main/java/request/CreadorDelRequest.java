@@ -47,6 +47,8 @@ public class CreadorDelRequest extends BaseDeDatos{
 	/**
 	 * Este mapa de valores contiene toda la informacion del DATADRIVEN (Excel que se va a utilizar)
 	 * y su fila correspondiente para llenar los datos del REQUEST A ENVIAR en las colas MQ
+	 * Para retornar el valor de este mapa se utiliza mapaDeValoresDelDataDriven.get(1)
+	 * en donde el numero 1 es el numero de la posicion en la cola del valor necesitado
 	 * @Type Map<Integer,String>
 	 * @author Mateo Castaño Vasquez
 	 */
@@ -56,6 +58,8 @@ public class CreadorDelRequest extends BaseDeDatos{
 	/**
 	 * Este mapa contiene los valores que seran remplazados en el REQUEST Despues de hacer todas los remplazos 
 	 * de Bases de datos por la informacion que se necesita agregar en el REQUEST 
+	 * para tomar un dato del mapa se usa la sentencia mapaDeValoresQueRemplazanElRequest.get("**amountValue**) 
+	 * en donde la palabra **amountValue** puede ser el nombre de la variable que necesitamos
 	 * @Type Map<String,String>
 	 * @author Mateo Castaño Vasquez
 	 */

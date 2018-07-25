@@ -73,7 +73,6 @@ public class BaseDeDatos extends LecturaDeArchivoConfiguracion{
 	 * @return Un String el cual contiene el resultado del valor buscado en BD
 	 */
 	public String consultarEnBaseDatos(String queryBaseDeDatos) {
-	//	crearConexion();
 		
 		String sql = "";
 		String valorDeBaseDeDatos = "";
@@ -96,9 +95,39 @@ public class BaseDeDatos extends LecturaDeArchivoConfiguracion{
 		}
 		cerrarConexion();
 		return valorDeBaseDeDatos;
-	//	return queryBaseDeDatos;
+
 	}
 	
+	
+	
+	
+	/**
+	 * Metodo encargado de realizar la busqueda en BD y recibir varias filas de datos.
+	 * @author Mateo Castaño Vasquez
+	 * @param queryBaseDeDatos
+	 * @return Un ResultSet de datos (varias filas y columnas de datos)
+	 */
+	public ResultSet consultarEnBaseDatosRecibirVariasFilas(String queryBaseDeDatos) {
+		
+		String sql = "";
+		PreparedStatement sentencia = null;
+		ResultSet resultado = null;
+
+		try {
+			sql = queryBaseDeDatos;
+
+			sentencia = crearConexion().prepareStatement(sql);
+
+			resultado = sentencia.executeQuery();
+		
+		} catch (SQLException e) {
+			System.out.println("No se logro hacer la consulta en Base de datos");
+			e.printStackTrace();
+		}
+		cerrarConexion();
+		return resultado;
+
+	}
 	
 	
 }
